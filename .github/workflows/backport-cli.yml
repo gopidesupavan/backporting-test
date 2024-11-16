@@ -51,7 +51,7 @@ jobs:
           set +e
           {
           echo 'cherry_picker_output<<EOF'
-          cherry_picker --config-path scripts/backport/.cherry_picker.toml ${{ inputs.commit-sha }} ${{ inputs.target-branch }}
+          cherry_picker --config-path dev/backport/.cherry_picker.toml ${{ inputs.commit-sha }} ${{ inputs.target-branch }}
           echo EOF
           } >> "${GITHUB_OUTPUT}"
         continue-on-error: true
@@ -82,4 +82,4 @@ jobs:
                         -H "Accept: application/vnd.github+json" \
                         -H "X-GitHub-Api-Version: 2022-11-28" \
                         /repos/${{ github.repository }}/commits/${{ inputs.commit-sha }}/pulls --jq '.[0].number')
-          python ./scripts/backport/update_backport_status.py ${{ steps.parse-backport-output.outputs.backport-url }} ${{ inputs.commit-sha }} ${{ inputs.target-branch }} "$PR_NUMBER"
+          python ./dev/backport/update_backport_status.py ${{ steps.parse-backport-output.outputs.backport-url }} ${{ inputs.commit-sha }} ${{ inputs.target-branch }} "$PR_NUMBER"
