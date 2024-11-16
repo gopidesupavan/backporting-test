@@ -45,6 +45,7 @@ jobs:
         id: execute-backport
         env:
           GH_AUTH: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.email "name@example.com"
           git config --global user.name "Your Name"
