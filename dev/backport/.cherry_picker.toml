@@ -1,0 +1,6 @@
+team = "gopidesupavan"
+repo = "backporting-test"
+"check_sha"= "d34165e9442eb8bd9da28ca03f1d8d48c4252d35"
+fix_commit_msg = false
+default_branch = "main"
+require_version_in_branch_name=false
