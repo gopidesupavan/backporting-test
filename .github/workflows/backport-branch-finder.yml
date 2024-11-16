@@ -1,8 +1,5 @@
-
-
 name: Backport branch finder
-
-on:
+on:  # yamllint disable-line rule:truthy
   push:
     branches:
       - main
@@ -33,7 +30,10 @@ jobs:
             });
             if (pullRequest.length > 0) {
                 const pr = pullRequest[0];
-                const backportBranches = pr.labels.filter(label => label.name.startsWith('backport-to-')).map(label => label.name.replace('backport-to-', ''));
+                const backportBranches = pr.labels
+                      .filter(label => label.name.startsWith('backport-to-'))
+                      .map(label => label.name.replace('backport-to-', ''));
+
                 console.log(`Commit ${process.env.GITHUB_SHA} is associated with PR ${pr.number}`);
                 console.log(`Backport branches: ${backportBranches}`);
                 core.setOutput('branches', JSON.stringify(backportBranches));
