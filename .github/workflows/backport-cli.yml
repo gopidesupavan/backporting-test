@@ -86,10 +86,9 @@ jobs:
                           "${{ inputs.commit-sha }}/pulls"
 
           PR_NUMBER=$(gh api \
-                -H "Accept: application/vnd.github+json" \
-                -H "X-GitHub-Api-Version: 2022-11-28" \
-                /repos/${{ github.repository }}/commits/${{ inputs.commit-sha }}/pulls \
-                --jq '.[0].number')
+                        -H "Accept: application/vnd.github+json" \
+                        -H "X-GitHub-Api-Version: 2022-11-28" \
+                        /repos/${{ github.repository }}/commits/${{ inputs.commit-sha }}/pulls --jq '.[0].number')
 
           python ./dev/backport/update_backport_status.py \
               ${{ steps.parse-backport-output.outputs.backport-url }} \
