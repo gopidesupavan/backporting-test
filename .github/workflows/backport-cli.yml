@@ -38,7 +38,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          python -m pip install --upgrade pip 5b0b30a641c3678dcbd73d7f8cc6df22805c634a
+          python -m pip install --upgrade pip
           python -m pip install git+https://github.com/gopidesupavan/herry-picker.git@add-pr-draft-config
           python -m pip install requests==2.32.3
           #cherry-picker==2.4.0 
